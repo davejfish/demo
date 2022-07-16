@@ -3,12 +3,12 @@ import { protectPage } from '../utils.js';
 import createUser from '../components/User.js';
 
 // State
-let user = null;
+import state from '../state.js';
 
 // Action Handlers
 async function handlePageLoad() {
-    user = getUser();
-    protectPage(user);
+    state.user = getUser();
+    protectPage(state.user);
 
     display();
 }
@@ -24,7 +24,7 @@ const User = createUser(
 );
 
 function display() {
-    User({ user });
+    User({ user: state.user });
 
 }
 
