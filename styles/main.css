@@ -62,6 +62,12 @@ main {
     box-shadow: 5px 3px 3px black;
 }
 
+.word-card span:hover {
+    background-color: black;
+    color: white;
+    border-bottom: solid 2px white;
+}
+
 .word {
     font-family: 'Gentium Plus', serif;
     text-transform: capitalize;
@@ -71,6 +77,7 @@ main {
 
 .container {
     width: 400px;
+    min-height: 255px;
     border: solid 3px black;
     border-radius: 8px;
     background-color: white;

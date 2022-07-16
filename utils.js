@@ -22,3 +22,11 @@ export function getRandomNum(totalWords) {
 
     return nums;
 }
+
+export function getWordByID(list, id) {
+    for (let word of list) {
+        if (word.id === Number(id)) return word;
+    }
+
+    return null;
+}

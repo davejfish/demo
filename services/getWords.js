@@ -8,3 +8,13 @@ export async function getWords() {
         );
     return response;
 }
+
+export async function getWord(id) {
+    const response = client
+        .from('words')
+        .select('*')
+        .eq('id', id)
+        .single();
+    
+    return response;
+}

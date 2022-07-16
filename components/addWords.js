@@ -7,10 +7,42 @@ export default function createAddWords(ul) {
         word2.textContent = snacks.snacks[1].word;
         word3.textContent = snacks.snacks[2].word;
         word4.textContent = snacks.snacks[3].word;
-    
-        a1.href = './word/';
-        a2.href = './word/';
-        a3.href = './word/';
-        a4.href = './word/';
+
+        a1.addEventListener('click', (e) => {
+            e.preventDefault();
+        
+            window.location.assign(
+                `./word/?id=${snacks.snacks[0].id}`
+            );
+
+        });
+
+        a2.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            window.location.assign(
+                `./word/?id=${snacks.snacks[1].id}`
+            );
+
+        });
+
+        a3.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            window.location.assign(
+                `./word/?id=${snacks.snacks[2].id}`
+            );
+
+        });
+
+        a4.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            window.location.assign(
+                `./word/?id=${snacks.snacks[3].id}`
+            );
+
+        });
     };
 }
+

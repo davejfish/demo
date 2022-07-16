@@ -1,5 +1,8 @@
 .single-word {
     padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .single-word h2 {
@@ -11,6 +14,14 @@
 
 .single-word span {
     font-style: italic;
+}
+
+.single-word h3:hover {
+    background-color: black;
+    color: white;
+    border-bottom: solid 2px white;
+    width: fit-content;
+    text-align: center;
 }
 
 .single-word button {
