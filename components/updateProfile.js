@@ -16,7 +16,6 @@ export default function createUpdateProfile(form, handleUpdateProfile) {
     return ({ profile }) => {
         if (profile) {
             const [username, favWord] = form.querySelector('span');
-            console.log(username, favWord);
             username.textContent = `username: ${profile.username}`;
             favWord.textContent = `favorite word: ${profile.fav_word}`;
         }
