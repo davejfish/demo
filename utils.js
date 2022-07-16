@@ -33,6 +33,6 @@ export function getWordByID(list, id) {
 
 export function enforceProfile(profile) {
     if (!profile) {
-        location.replace('./profile');
+        location.replace('./editProfile');
     }
 }

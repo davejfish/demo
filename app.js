@@ -15,7 +15,14 @@ async function handlePageLoad() {
     state.user = getUser();
     protectPage(state.user);
 
-    state.profile = await getProfile(state.user.id);
+    const response = await getProfile(state.user.id);
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+        return;
+    }
+    state.profile = response.data;
+
     enforceProfile(state.profile);
 
     const { data, error, count } = await getWords();
@@ -38,7 +45,7 @@ async function handleSignOut() {
     signOut();
 }
 
-async function handleGetWords() {
+function handleGetWords() {
     const { start, end } = getRandomNum(Number(state.totalWords));
     state.snacks = state.words.slice(start, end);
 }

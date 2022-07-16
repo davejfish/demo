@@ -5,6 +5,7 @@ import createUser from '../components/User.js';
 // State
 import state from '../state.js';
 import createUpdateProfile from '../components/updateProfile.js';
+import { updateProfile, upsertProfile } from '../services/getProfile.js';
 
 // Action Handlers
 async function handlePageLoad() {
@@ -18,9 +19,23 @@ async function handleSignOut() {
     signOut();
 }
 
-async function handleUpdateProfile(data) {
-    // eslint-disable-next-line no-console
-    console.log(data);
+async function handleUpdateProfile(props) {
+    const dataToUpdate = {
+        username: props.username,
+        fav_word: props.fav_word,
+        profile_id: state.user.id,
+    };
+
+    const response = await updateProfile(dataToUpdate);
+    if (response.error) {
+        state.profile = await upsertProfile(dataToUpdate);
+    }
+    else {
+        state.profile = response.data;
+    }
+
+    location.replace('../');
+
 }
 
 // Components 
@@ -33,7 +48,7 @@ const UpdateProfile = createUpdateProfile(document.querySelector('.update-profil
 
 function display() {
     User({ user: state.user });
-    UpdateProfile();
+    UpdateProfile({ profile: state.profile });
 }
 
 handlePageLoad();

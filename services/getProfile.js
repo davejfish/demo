@@ -6,13 +6,23 @@ export async function getProfile(id) {
         .select('*')
         .eq('profile_id', id)
         .single();
-    return response.data;
+    return response;
 }
 
 export async function upsertProfile(profile) {
+
     const response = await client
         .from('user-profile')
         .upsert(profile)
+        .eq('profile_id', profile.profile_id)
+        .single();
+    return response.data;
+}
+
+export async function updateProfile(profile) {
+    const response = await client
+        .from('user-profile')
+        .update(profile)
         .eq('profile_id', profile.profile_id)
         .single();
     return response;
