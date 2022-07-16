@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="../assets/alchemy-favicon.png" />
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/editProfile.css" />
+    <title>Cool Web App</title>
+</head>
+
+<body>
+    <header>
+        <h1>Mouthful</h1>
+        <div id="user"></div>
+    </header>
+
+    <main>
+        <section id="profile" class="container">
+            <h2>profile</h2>
+            <form class="update-profile">
+                <label>
+                    username:
+                    <input name="username">
+                </label>
+                <label>
+                    favorite word:
+                    <input name="fav-word">
+                </label>
+                <button>submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="editProfile.js"></script>
+</body>
+
+</html>
