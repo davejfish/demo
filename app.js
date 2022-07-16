@@ -1,17 +1,22 @@
 import { getUser, signOut } from './services/auth-service.js';
-import { getRandomNum, protectPage } from './utils.js';
+import { enforceProfile, getRandomNum, protectPage } from './utils.js';
 import createUser from './components/User.js';
 import createAddWords from './components/addWords.js';
 import { getWords } from './services/getWords.js';
+import { getProfile } from './services/getProfile.js';
 
 // State
 import state from './state.js';
+
 
 
 // Action Handlers
 async function handlePageLoad() {
     state.user = getUser();
     protectPage(state.user);
+
+    state.profile = await getProfile(state.user.id);
+    enforceProfile(state.profile);
 
     const { data, error, count } = await getWords();
     

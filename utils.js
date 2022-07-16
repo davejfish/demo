@@ -30,3 +30,9 @@ export function getWordByID(list, id) {
 
     return null;
 }
+
+export function enforceProfile(profile) {
+    if (!profile) {
+        location.replace('./profile');
+    }
+}
