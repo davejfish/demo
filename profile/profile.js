@@ -23,8 +23,7 @@ async function handlePageLoad() {
     state.profile = response.data;
 
     state.linkedWords = await getLinkedTable();
-    // eslint-disable-next-line no-console
-    console.log(state.linkedWords);
+    
 
     enforceProfile(state.profile);
 
@@ -35,22 +34,17 @@ async function handleSignOut() {
     signOut();
 }
 
-async function handleBuildSnacks() {
-    // eslint-disable-next-line no-console
-    console.log('we in there');
-}
-
 // Components 
 const User = createUser(
     document.querySelector('#user'),
     { handleSignOut }
 );
 
-const BuildSnacks = createBuildSnacks(document.querySelector('.words'), handleBuildSnacks);
+const BuildSnacks = createBuildSnacks(document.querySelector('.words'));
 
 function display() {
     User({ user: state.user });
-    BuildSnacks();
+    BuildSnacks({ linkedWords: state.linkedWords, profile: state.profile });
 }
 
 handlePageLoad();
