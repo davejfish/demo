@@ -4,11 +4,15 @@
     --footer-background: rgb(243, 242, 242);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&display=swap');
+
 body {
     height: 100%;
     padding-bottom: 30px;
     font-family: 'Rubik', san-serif;
-    background: var(--background);
+    background-image: url('../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
@@ -16,7 +20,13 @@ header {
     top: 0;
     display: flex;
     align-items: center;
+    font-family: 'Gentium Plus', serif;
+    text-transform: lowercase;
     background-color: var(--header-background);
+}
+
+header h1 {
+    margin-left: 30px;
 }
 
 #user {
@@ -36,16 +46,43 @@ header {
 }
 
 main {
-    height: 100%;
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--footer-background);
+.word-card {
+    border: solid 3px black;
+    border-radius: 8px;
+    margin: 30px 20px;
+    padding: 20px;
+    box-shadow: 5px 3px 3px black;
 }
+
+.word-card span:hover {
+    background-color: black;
+    color: white;
+    border-bottom: solid 2px white;
+}
+
+.word {
+    font-family: 'Gentium Plus', serif;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.container {
+    width: 400px;
+    min-height: 255px;
+    border: solid 3px black;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
+    margin: 50px 0;
+    box-shadow: 5px 3px 3px black;
+}
+

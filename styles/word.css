@@ -1,0 +1,35 @@
+.single-word {
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.single-word h2 {
+    border-bottom: solid 2px black;
+    width: 180px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.single-word span {
+    font-style: italic;
+}
+
+.single-word h3:hover {
+    background-color: black;
+    color: white;
+    border-bottom: solid 2px white;
+    width: fit-content;
+    text-align: center;
+}
+
+.single-word button {
+    border-radius: 8px;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.container {
+    transform: translate(0px, 150px);
+}

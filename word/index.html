@@ -13,35 +13,33 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/auth.css" />
-    <title>Auth</title>
+    <link rel="stylesheet" href="../styles/word.css" />
+    <title>Cool Web App</title>
 </head>
 
 <body>
     <header>
-        <img src="../assets/html_css_js.png">
-        <h1>Auth</h1>
+        <h1>Mouthful</h1>
+        <div id="user"></div>
+        <nav>
+            <a href="/">home</a>
+            <a href="../profile/">settings</a>
+        </nav>
     </header>
 
     <main>
-        <form id="auth-form">
-            <h2></h2>
-            <label>
-                Email
-                <input type="email" name="email" required />
-            </label>
-            <label>
-                Password
-                <input type="password" name="password" required />
-            </label>
-            <button></button>
-            <p class="error"></p>
-            <p class="change-type"></p>
-        </form>
-
+        <section class="container">
+            <div class="single-word">
+                <h2>single-serving</h2>
+                <h3 class="snack"></h2>
+                <span class="snack"></span>
+                <p class="snack"></p>
+                <button>add</button>
+            </div>
+        </section>
     </main>
 
-    <script type="module" src="auth.js"></script>
+    <script type="module" src="word.js"></script>
 </body>
 
 </html>

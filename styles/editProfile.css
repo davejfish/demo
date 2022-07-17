@@ -1,0 +1,46 @@
+label {
+    display: contents;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    min-height: 200px;
+}
+
+.container h2 {
+    align-self: center;
+    border-bottom: solid 2px black;
+    width: fit-content;
+}
+
+.container span {
+    margin: 10px 5px;
+}
+
+.container a {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+}
+
+.update-profile input {
+    margin-bottom: 10px;
+}
+
+.update-profile button {
+    width: fit-content;
+    align-self: center;
+    margin-top: 10px;
+}

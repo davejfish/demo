@@ -13,35 +13,37 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/auth.css" />
-    <title>Auth</title>
+    <link rel="stylesheet" href="../styles/editProfile.css" />
+    <title>Cool Web App</title>
 </head>
 
 <body>
     <header>
-        <img src="../assets/html_css_js.png">
-        <h1>Auth</h1>
+        <h1>Mouthful</h1>
+        <div id="user"></div>
+        <nav>
+            <a href="/">home</a>
+        </nav>
     </header>
 
     <main>
-        <form id="auth-form">
-            <h2></h2>
-            <label>
-                Email
-                <input type="email" name="email" required />
-            </label>
-            <label>
-                Password
-                <input type="password" name="password" required />
-            </label>
-            <button></button>
-            <p class="error"></p>
-            <p class="change-type"></p>
-        </form>
-
+        <section id="profile" class="container">
+            <h2>profile</h2>
+            <form class="update-profile">
+                <label>
+                    username:
+                    <input class="input1" name="username">
+                </label>
+                <label>
+                    favorite word:
+                    <input class="input2" name="fav-word">
+                </label>
+                <button>submit</button>
+            </form>
+        </section>
     </main>
 
-    <script type="module" src="auth.js"></script>
+    <script type="module" src="editProfile.js"></script>
 </body>
 
 </html>
