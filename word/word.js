@@ -52,13 +52,23 @@ const User = createUser(
     { handleSignOut }
 );
 
-async function handleAddWord(word, id) {
-    const response = await addWord(word, id);
+async function handleAddWord() {
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get('id'));
+
+    const dataToAdd = {
+        word_id: id,
+        profile_id: state.profile.id
+    };
+
+    const response = await addWord(dataToAdd);
     if (response.error) {
         // eslint-disable-next-line no-console
         console.log(response.error);
         return;
     }
+    
+    
     state.profile = response.data;
 }
 
