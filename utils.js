@@ -36,3 +36,12 @@ export function enforceProfile(profile) {
         location.replace('./editProfile');
     }
 }
+
+export function findByID(list, id) {
+    for (let item of list) {
+        if (item.id === id) {
+            return item;
+        } 
+    }
+    return null;
+}

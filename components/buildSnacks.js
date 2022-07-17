@@ -1,10 +1,10 @@
-export default function createBuildSnacks(ul) {
-    ul.innerHTML = '';
-
+export default function createBuildSnacks(ul, handleDeleteSnack) {
+    
     return ({ linkedWords, profile }) => {
+        ul.innerHTML = '';
         for (let word of linkedWords) {
             if (word.profile_id === profile.id) {
-                const li = createCard(word);
+                const li = createCard(word, handleDeleteSnack);
                 ul.append(li);
             }
         }
@@ -16,7 +16,7 @@ export default function createBuildSnacks(ul) {
     };
 }
 
-function createCard(word) {
+function createCard(word, handleDeleteSnack) {
     const h3 = document.createElement('h3');
     h3.classList.add('word');
     h3.textContent = word.words.word;
@@ -28,7 +28,11 @@ function createCard(word) {
     p.textContent = word.words.definition;
 
     const button = document.createElement('button');
+    button.setAttribute('id', word.id);
     button.textContent = 'remove';
+    button.addEventListener('click', () => {
+        handleDeleteSnack(button.id);
+    });
 
     const li = document.createElement('li');
     li.append(h3, span, p, button);

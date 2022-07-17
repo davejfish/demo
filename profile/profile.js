@@ -1,5 +1,5 @@
 import { getUser, signOut } from '../services/auth-service.js';
-import { protectPage } from '../utils.js';
+import { findByID, protectPage } from '../utils.js';
 import createUser from '../components/User.js';
 import { getProfile } from '../services/getProfile.js';
 import { enforceProfile } from '../utils.js';
@@ -7,7 +7,7 @@ import { enforceProfile } from '../utils.js';
 // State
 import state from '../state.js';
 import createBuildSnacks from '../components/buildSnacks.js';
-import { getLinkedTable } from '../services/addWords.js';
+import { deleteSnack, getLinkedTable } from '../services/addWords.js';
 
 // Action Handlers
 async function handlePageLoad() {
@@ -29,13 +29,23 @@ async function handleSignOut() {
     signOut();
 }
 
+async function handleDeleteSnack(id) {
+    await deleteSnack(Number(id));
+
+    const item = findByID(state.linkedWords, Number(id));
+    const index = state.linkedWords.indexOf(item);
+    state.linkedWords.splice(index, 1);
+    
+    display();
+}
+
 // Components 
 const User = createUser(
     document.querySelector('#user'),
     { handleSignOut }
 );
 
-const BuildSnacks = createBuildSnacks(document.querySelector('.words'));
+const BuildSnacks = createBuildSnacks(document.querySelector('.words'), handleDeleteSnack);
 
 function display() {
     User({ user: state.user });

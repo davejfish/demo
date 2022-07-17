@@ -21,3 +21,12 @@ export async function getLinkedTable() {
             words (*)`);
     return response.data;
 }
+
+export async function deleteSnack(id) {
+    const response = await client
+        .from('words_to_profiles')
+        .delete()
+        .eq('id', id)
+        .single();
+    return response.data;
+}
