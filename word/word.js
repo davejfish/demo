@@ -1,10 +1,9 @@
 import { getUser, signOut } from '../services/auth-service.js';
-import { protectPage } from '../utils.js';
+import { protectPage, findByID } from '../utils.js';
 import createUser from '../components/User.js';
 import createSnack from '../components/snack.js';
 import { getWord } from '../services/getWords.js';
 import { getProfile } from '../services/getProfile.js';
-import { enforceProfile, findByID } from '../utils.js';
 import { addWord, getUserWords, deleteSnack } from '../services/addWords.js';
 
 // State
@@ -25,7 +24,9 @@ async function handlePageLoad() {
     }
     state.profile = response.data;
 
-    enforceProfile(state.profile);
+    if (!state.profile) {
+        location.replace('../editProfile');
+    }
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');

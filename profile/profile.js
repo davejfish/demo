@@ -16,6 +16,10 @@ async function handlePageLoad() {
 
     const response = await getProfile(state.user.id);
     state.profile = response.data;
+    
+    if (!state.profile) {
+        location.replace('../editProfile');
+    }
 
     state.linkedWords = await getLinkedTable();
     

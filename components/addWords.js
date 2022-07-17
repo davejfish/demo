@@ -25,6 +25,9 @@ export default function createAddWords(ul, handleAddWord) {
         word4.setAttribute('id', snacks[3].id);
         word4.addEventListener('dragstart', dragStart);
 
+        basket.addEventListener('dragenter', dragEnter);
+        basket.addEventListener('dragover', dragOver);
+        basket.addEventListener('dragleave', dragLeave);
         basket.addEventListener('drop', drop);
 
         a1.addEventListener('click', (e) => {
@@ -66,6 +69,18 @@ export default function createAddWords(ul, handleAddWord) {
         function dragStart(e) {
             // rice id
             e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function dragEnter(e) {
+            e.preventDefault();
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function dragLeave(e) {
+            e.preventDefault();
         }
 
         function drop(e) {
