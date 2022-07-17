@@ -4,11 +4,12 @@ import createUser from '../components/User.js';
 import createSnack from '../components/snack.js';
 import { getWord } from '../services/getWords.js';
 import { getProfile } from '../services/getProfile.js';
-import { enforceProfile } from '../utils.js';
+import { enforceProfile, findByID } from '../utils.js';
+import { addWord, getUserWords, deleteSnack } from '../services/addWords.js';
 
 // State
 import state from '../state.js';
-import { addWord } from '../services/addWords.js';
+
 
 
 // Action Handlers
@@ -38,6 +39,7 @@ async function handlePageLoad() {
     }
 
     state.word = data;
+    state.snacks = await getUserWords(state.profile.id);
 
     display();
 }
@@ -45,12 +47,6 @@ async function handlePageLoad() {
 async function handleSignOut() {
     signOut();
 }
-
-// Components 
-const User = createUser(
-    document.querySelector('#user'),
-    { handleSignOut }
-);
 
 async function handleAddWord() {
     const params = new URLSearchParams(window.location.search);
@@ -67,16 +63,29 @@ async function handleAddWord() {
         console.log(response.error);
         return;
     }
-    
-    
+
     state.profile = response.data;
 }
 
-const Snack = createSnack(document.querySelector('.single-word'), handleAddWord);
+async function handleDeleteSnack(id) {
+    await deleteSnack(Number(id));
+
+    const item = findByID(state.linkedWords, Number(id));
+    const index = state.linkedWords.indexOf(item);
+    state.linkedWords.splice(index, 1);
+}
+
+// Components 
+const User = createUser(
+    document.querySelector('#user'),
+    { handleSignOut }
+);
+
+const Snack = createSnack(document.querySelector('.single-word'), handleAddWord, handleDeleteSnack);
 
 function display() {
     User({ user: state.user });
-    Snack({ word: state.word, user: state.user });
+    Snack({ word: state.word, user: state.user, snacks: state.snacks });
 }
 
 handlePageLoad();

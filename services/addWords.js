@@ -22,6 +22,15 @@ export async function getLinkedTable() {
     return response.data;
 }
 
+export async function getUserWords(id) {
+    const response = await client
+        .from('words_to_profiles')
+        .select(`*, 
+            words (*)`)
+        .eq('profile_id', id);
+    return response.data;
+}
+
 export async function deleteSnack(id) {
     const response = await client
         .from('words_to_profiles')
