@@ -15,11 +15,6 @@ async function handlePageLoad() {
     protectPage(state.user);
 
     const response = await getProfile(state.user.id);
-    if (response.error) {
-        // eslint-disable-next-line no-console
-        console.log(response.error);
-        return;
-    }
     state.profile = response.data;
 
     state.linkedWords = await getLinkedTable();
