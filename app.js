@@ -4,11 +4,10 @@ import createUser from './components/User.js';
 import createAddWords from './components/addWords.js';
 import { getWords } from './services/getWords.js';
 import { getProfile } from './services/getProfile.js';
+import { addWord } from './services/addWords.js';
 
 // State
 import state from './state.js';
-
-
 
 // Action Handlers
 async function handlePageLoad() {
@@ -45,17 +44,34 @@ function handleGetWords() {
     state.snacks = state.words.slice(start, end);
 }
 
+async function handleAddWord(id) {
+
+    const dataToAdd = {
+        word_id: id,
+        profile_id: state.profile.id
+    };
+
+    const response = await addWord(dataToAdd);
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+        return;
+    }
+
+    state.profile = response.data;
+}
+
 // Components 
 const User = createUser(
     document.querySelector('#user'),
     { handleSignOut }
 );
 
-const AddWords = createAddWords(document.querySelector('.words'));
+const AddWords = createAddWords(document.querySelector('.words'), handleAddWord);
 
 function display() {
     User({ user: state.user });
-    AddWords({ snacks: state.snacks });
+    AddWords({ snacks: state.snacks, profile: state.profile });
 }
 
 handlePageLoad();
