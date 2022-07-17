@@ -8,6 +8,7 @@ import { enforceProfile } from '../utils.js';
 
 // State
 import state from '../state.js';
+import { addWord } from '../services/addWords.js';
 
 
 // Action Handlers
@@ -52,7 +53,13 @@ const User = createUser(
 );
 
 async function handleAddWord(word, id) {
-    console.log(`word: ${word.word}, id: ${id}`);
+    const response = await addWord(word, id);
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+        return;
+    }
+    state.profile = response.data;
 }
 
 const Snack = createSnack(document.querySelector('.single-word'), handleAddWord);

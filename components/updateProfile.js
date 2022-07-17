@@ -15,9 +15,11 @@ export default function createUpdateProfile(form, handleUpdateProfile) {
 
     return ({ profile }) => {
         if (profile) {
-            const [username, favWord] = form.querySelector('span');
-            username.textContent = `username: ${profile.username}`;
-            favWord.textContent = `favorite word: ${profile.fav_word}`;
+            const name = form.querySelector('.input1');
+            const favWord = form.querySelector('.input2');
+    
+            name.value = profile.username;
+            favWord.value = profile.fav_word;
         }
     };
 }
