@@ -11,7 +11,7 @@ export default function createSnack(root, handleAddWord) {
         const addButton = root.querySelector('button');
         addButton.addEventListener('click', () => {
             handleAddWord(word, user.id);
-            // location.replace('/');
+            location.replace('/');
         });
     };
 }

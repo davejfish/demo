@@ -13,3 +13,11 @@ export async function addWord(data) {
 
     return response;
 }
+
+export async function getLinkedTable() {
+    const response = await client
+        .from('words_to_profiles')
+        .select(`*, 
+            words (*)`);
+    return response;
+}

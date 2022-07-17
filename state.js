@@ -8,6 +8,7 @@ function initialize() {
     state.profile = null;
     state.userWords = [];
     state.snacks = [];
+    state.linkedWords = [];
 }
 
 initialize();

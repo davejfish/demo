@@ -6,6 +6,7 @@ import { enforceProfile } from '../utils.js';
 
 // State
 import state from '../state.js';
+import createBuildSnacks from '../components/buildSnacks.js';
 
 // Action Handlers
 async function handlePageLoad() {
@@ -29,15 +30,21 @@ async function handleSignOut() {
     signOut();
 }
 
+async function handleBuildSnacks() {
+    console.log('we in there');
+}
+
 // Components 
 const User = createUser(
     document.querySelector('#user'),
     { handleSignOut }
 );
 
+const BuildSnacks = createBuildSnacks(document.querySelector('.words'), handleBuildSnacks);
+
 function display() {
     User({ user: state.user });
-
+    BuildSnacks();
 }
 
 handlePageLoad();
