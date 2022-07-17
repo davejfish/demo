@@ -57,8 +57,6 @@ async function handleAddWord(id) {
         console.log(response.error);
         return;
     }
-
-    state.profile = response.data;
 }
 
 // Components 
