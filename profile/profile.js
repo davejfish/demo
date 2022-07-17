@@ -7,6 +7,7 @@ import { enforceProfile } from '../utils.js';
 // State
 import state from '../state.js';
 import createBuildSnacks from '../components/buildSnacks.js';
+import { getLinkedTable } from '../services/addWords.js';
 
 // Action Handlers
 async function handlePageLoad() {
@@ -21,6 +22,10 @@ async function handlePageLoad() {
     }
     state.profile = response.data;
 
+    state.linkedWords = await getLinkedTable();
+    // eslint-disable-next-line no-console
+    console.log(state.linkedWords);
+
     enforceProfile(state.profile);
 
     display();
@@ -31,6 +36,7 @@ async function handleSignOut() {
 }
 
 async function handleBuildSnacks() {
+    // eslint-disable-next-line no-console
     console.log('we in there');
 }
 

@@ -19,5 +19,5 @@ export async function getLinkedTable() {
         .from('words_to_profiles')
         .select(`*, 
             words (*)`);
-    return response;
+    return response.data;
 }
