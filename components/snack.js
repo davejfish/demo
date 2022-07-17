@@ -9,8 +9,8 @@ export default function createSnack(root, handleAddWord) {
         p.textContent = word.definition;
 
         const addButton = root.querySelector('button');
-        addButton.addEventListener('click', () => {
-            handleAddWord(word, user.id);
+        addButton.addEventListener('click', async () => {
+            await handleAddWord(word, user.id);
             location.replace('/');
         });
     };
