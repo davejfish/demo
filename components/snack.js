@@ -19,13 +19,12 @@ export default function createSnack(root, handleAddWord, handleDeleteSnack) {
                 });
                 return;
             }
-            else {
-                addButton.textContent = 'add';
-                addButton.addEventListener('click', async () => {
-                    await handleAddWord(word, user.id);
-                    location.replace('/');
-                });
-            }
         }
+        addButton.textContent = 'add';
+        addButton.addEventListener('click', async () => {
+            await handleAddWord(word, user.id);
+            location.replace('/');
+        });
+        
     };
 }
